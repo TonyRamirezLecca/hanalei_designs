@@ -1,22 +1,37 @@
+import dotenv from "dotenv";
 import express from "express";
-import data from "./data.js";
+import mongoose from "mongoose";
+import productRouter from "./routers/productRouter.js";
+import userRouter from "./routers/userRouter.js";
+
+dotenv.config();
 
 const port = process.env.PORT || 5000;
 const app = express();
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-app.get("/api/products/:id", (req, res) => {
-    const product = data.products.find((x) => x._id === req.params.id);
-    if (product) {
-        res.send(product);
-    } else {
-        res.status(404).send({ message: "Product not found" });
-    }
+mongoose.connect(process.env.MONGODB_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
 });
-app.get("/api/products", (req, res) => {
-    res.send(data.products);
+const connection = mongoose.connection;
+connection.on("error", console.error.bind(console, "Error connecting to MongoDB Cluster: "));
+connection.once("open", function callback() {
+    console.log("Server connected to MongoDB Cluster");
 });
+
+app.use("/api/products", productRouter);
+app.use("/api/users", userRouter);
+
 app.get("/", (req, res) => {
     res.send("Server is ready");
+});
+
+//Error catcher
+app.use((err, req, res, next) => {
+    res.status(500).send({ message: err.message });
 });
 
 app.listen(port, () => {

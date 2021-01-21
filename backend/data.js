@@ -1,7 +1,22 @@
+import bcrypt from "bcryptjs";
+
 const data = {
+    users: [
+        {
+            name: "Tony",
+            email: "tonyramirezlecca@gmail.com",
+            password: bcrypt.hashSync("1234", 8),
+            isAdmin: true,
+        },
+        {
+            name: "Peruvian",
+            email: "thatoneperuvian@gmail.com",
+            password: bcrypt.hashSync("1234", 10),
+            isAdmin: false,
+        },
+    ],
     products: [
         {
-            _id: "1",
             name: "Nike Slim Shirt",
             category: "Shirts",
             image: "https://amazona.webacademy.pro/images/p1.jpg",
@@ -13,7 +28,6 @@ const data = {
             description: "Very high quality shirt",
         },
         {
-            _id: "2",
             name: "Slim Pants",
             category: "Pants",
             image: "https://amazona.webacademy.pro/images/p2.jpg",
@@ -25,9 +39,8 @@ const data = {
             description: "Very high quality pants",
         },
         {
-            _id: "3",
-            name: "Nike Slim Shirt",
-            category: "Shirts",
+            name: "Nice Belt",
+            category: "Accessories",
             image: "https://amazona.webacademy.pro/images/p3.jpg",
             price: 120,
             countInStock: 25,
@@ -37,9 +50,8 @@ const data = {
             description: "Very high quality shirt",
         },
         {
-            _id: "4",
-            name: "Nike Slim Shirt",
-            category: "Shirts",
+            name: "Watch",
+            category: "Accessories",
             image: "https://amazona.webacademy.pro/images/p4.jpg",
             countInStock: 0,
             price: 120,
@@ -49,9 +61,8 @@ const data = {
             description: "Very high quality shirt",
         },
         {
-            _id: "5",
-            name: "Nike Slim Shirt",
-            category: "Shirts",
+            name: "Stretchy Pants",
+            category: "Pants",
             image: "https://amazona.webacademy.pro/images/p5.jpg",
             price: 120,
             countInStock: 44,
@@ -61,9 +72,8 @@ const data = {
             description: "Very high quality shirt",
         },
         {
-            _id: "6",
-            name: "Nike Slim Shirt",
-            category: "Shirts",
+            name: "Straight Pants",
+            category: "Pants",
             image: "https://amazona.webacademy.pro/images/p6.jpg",
             price: 120,
             countInStock: 10,
