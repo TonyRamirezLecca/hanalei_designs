@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { addToCart, removeFromCart } from "../actions/cartActions";
-import MessageBox from "../components/MessageBox";
+import { MessageBox } from "../components";
 
 export default function CartScreen(props) {
     const dispatch = useDispatch();

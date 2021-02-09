@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { savePaymentMethod } from "../actions/cartActions";
-import CheckoutSteps from "../components/CheckoutSteps";
+import { CheckoutSteps } from "../components/misc/";
 
 export default function PaymentMethodScreen(props) {
     const dispatch = useDispatch();

@@ -8,6 +8,7 @@ import OrderDetailsScreen from "./screens/OrderDetailsScreen";
 import PaymentMethodScreen from "./screens/PaymentMethodScreen";
 import PlaceOrderScreen from "./screens/PlaceOrderScreen";
 import ProductScreen from "./screens/ProductScreen";
+import ProductsScreen from "./screens/ProductsScreen";
 import RegisterScreen from "./screens/RegisterScreen";
 import ShippingAddressScreen from "./screens/ShippingAddressScreen";
 import SignInScreen from "./screens/SignInScreen";
@@ -25,26 +26,20 @@ function App() {
 
     return (
         <BrowserRouter>
-            <div className="grid-container">
-                <header className="row">
+            <div>
+                <header>
                     <div>
-                        <Link className="brand" to="/">
-                            Hanalei Designs
-                        </Link>
+                        <Link to="/">Hanalei Designs</Link>
                     </div>
                     <div>
                         <Link to="/cart">
                             Cart
-                            {cartItems.length > 0 && (
-                                <span className="badge">{cartItems.length}</span>
-                            )}
+                            {cartItems.length > 0 && <span>{cartItems.length}</span>}
                         </Link>
                         {userInfo ? (
-                            <div className="dropdown">
-                                <Link to="/">
-                                    {userInfo.name} <i className="fa fa-caret-down"></i>
-                                </Link>
-                                <ul className="dropdown-content">
+                            <div>
+                                <Link to="/">{userInfo.name}</Link>
+                                <ul>
                                     <Link to="/" onClick={signoutHandler}>
                                         Sign Out
                                     </Link>
@@ -56,6 +51,7 @@ function App() {
                     </div>
                 </header>
                 <main>
+                    <Route path="/products/" component={ProductsScreen} />
                     <Route path="/product/:id" component={ProductScreen} />
                     <Route path="/cart/:id?" component={CartScreen} />
                     <Route path="/signin" component={SignInScreen} />
@@ -66,7 +62,7 @@ function App() {
                     <Route path="/order/:id" component={OrderDetailsScreen} />
                     <Route path="/" component={HomeScreen} exact />
                 </main>
-                <footer className="row center">All rights reserved</footer>
+                <footer>All rights reserved</footer>
             </div>
         </BrowserRouter>
     );

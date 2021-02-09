@@ -1,3 +1,5 @@
+@import "./styles/variables";
+
 html {
     font-size: 62.5%; /* 16px * 62.5 = 10px = 1rem*/
     box-sizing: border-box;
@@ -193,6 +195,10 @@ span.num_reviews {
 .alert-danger {
     color: #a02020;
     background-color: #ffe0e0e0;
+}
+.alert-success {
+    color: #20a020;
+    background-color: #eeffe0;
 }
 
 /* Form */
